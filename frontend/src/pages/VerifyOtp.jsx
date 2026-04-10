@@ -56,7 +56,8 @@ export default function VerifyOtp() {
                 margin: "5px",
                 fontSize: "18px",
                 borderRadius: "8px",
-                border: "2px solid #00ffc3",
+                background: "#ffa50040",
+                border: "2px solid orange",
                 textAlign: "center",
               }}
             />

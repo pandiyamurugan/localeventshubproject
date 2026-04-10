@@ -173,11 +173,22 @@ export default function Login() {
           </div>
 
           <div className="d-flex gap-3 justify-content-center">
-            <div className="social-btn"><FaFacebookF /></div>
-            <div className="social-btn"><FaTwitter /></div>
-            <div className="social-btn"><FaGoogle /></div>
-            <div className="social-btn"><FaLinkedinIn /></div>
-          </div>
+  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="social-btn">
+    <FaFacebookF className="text-white" />
+  </a>
+
+  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-btn">
+    <FaTwitter className="text-white"/>
+  </a>
+
+  <a href="https://accounts.google.com" target="_blank" rel="noopener noreferrer" className="social-btn">
+    <FaGoogle className="text-white"/>
+  </a>
+
+  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="social-btn">
+    <FaLinkedinIn className="text-white"/>
+  </a>
+</div>
 
           <p className="mt-4 text-center">
             Don't have an account?
