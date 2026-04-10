@@ -5,7 +5,7 @@ import Latestevents23 from "../images/homesection3.webp";
 import Latestevents24 from "../images/homesection4.jpg";
 import Latestevents25 from "../images/homesection5.webp";
 import Latestevents26 from "../images/homesection6.webp";
-import Latestevents01 from "../images/movieslist02.jpg";
+
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -20,44 +20,44 @@ function LastEvents() {
     });
   }, []);
 
-  const groupEvents = [
-    {
-      image: Latestevents,
-      date: "Nov 18, 2023",
-      city: "New York, NY",
-      category: "Design",
-      work: "Remote",
-      heading: "Product Design New York event",
-      description: "Sit gravida felis purus egestas sem tellus",
-    },
-    {
-      image: Latestevents22,
-      date: "Nov 18, 2023",
-      city: "San Francisco, CA",
-      category: "Design",
-      work: "Remote",
-      heading: "UX Design Meetup",
-      description: "Sit gravida felis purus egestas sem tellus",
-    },
-    {
-      image: Latestevents23,
-      date: "Nov 18, 2023",
-      city: "Chicago, IL",
-      category: "Design",
-      work: "Remote",
-      heading: "UI Conference",
-      description: "Sit gravida felis purus egestas sem tellus",
-    },
-    {
-      image: Latestevents24,
-      date: "Nov 18, 2023",
-      city: "Boston, MA",
-      category: "Design",
-      work: "Remote",
-      heading: "Design Thinking Workshop",
-      description: "Sit gravida felis purus egestas sem tellus",
-    },
-      {
+ const groupEvents = useMemo(() => [
+  {
+    image: Latestevents,
+    date: "Nov 18, 2023",
+    city: "New York, NY",
+    category: "Design",
+    work: "Remote",
+    heading: "Product Design New York event",
+    description: "Sit gravida felis purus egestas sem tellus",
+  },
+  {
+    image: Latestevents22,
+    date: "Nov 18, 2023",
+    city: "San Francisco, CA",
+    category: "Design",
+    work: "Remote",
+    heading: "UX Design Meetup",
+    description: "Sit gravida felis purus egestas sem tellus",
+  },
+  {
+    image: Latestevents23,
+    date: "Nov 18, 2023",
+    city: "Chicago, IL",
+    category: "Design",
+    work: "Remote",
+    heading: "UI Conference",
+    description: "Sit gravida felis purus egestas sem tellus",
+  },
+  {
+    image: Latestevents24,
+    date: "Nov 18, 2023",
+    city: "Boston, MA",
+    category: "Design",
+    work: "Remote",
+    heading: "Design Thinking Workshop",
+    description: "Sit gravida felis purus egestas sem tellus",
+  },
+  {
     image: Latestevents25,
     date: "Apr 18, 2024",
     city: "New York, NY",
@@ -75,11 +75,9 @@ function LastEvents() {
     heading: "Open Mic Music Meetup",
     description: "Perform your music live and connect with fellow artists",
   }
-  ];
+], []);
 
-  const visibleEvents = useMemo(() => {
-    return groupEvents.slice(0, visible);
-  }, [visible, groupEvents]);
+  const visibleEvents = groupEvents.slice(0, visible);
 
   return (
     <div className="container py-5 my-5" data-aos="fade-up">

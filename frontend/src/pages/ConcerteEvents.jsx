@@ -21,7 +21,9 @@ From music concerts to cultural gatherings, find experiences that match your vib
         <div className='container-fluid ' style={{background:"black"}}>
          <div className='row px-0 d-flex justify-content-between'>
           <div className='col-lg-4' data-aos="fade-right">
-           <img src={Musicimages1}   style={{
+           <img src={Musicimages1} 
+             alt="Music event banner"
+             style={{
       width: "100%",
       height: "800px",
        transform: "scaleX(-1)",
@@ -80,6 +82,7 @@ From music concerts to cultural gatherings, find experiences that match your vib
       <div className="d-flex align-items-center gap-3" >
 
         <img 
+          alt="Music event banner"
           src={`https://picsum.photos/50?random=${index}`} 
           style={{width:"50px",height:"50px",borderRadius:"5px"}}
         />
@@ -113,6 +116,7 @@ From music concerts to cultural gatherings, find experiences that match your vib
 
       <div className="d-flex align-items-center gap-2">
         <img 
+          alt="Music event banner"
           src="https://picsum.photos/50" 
           style={{width:"40px",height:"40px",borderRadius:"5px"}}
         />
@@ -135,7 +139,7 @@ From music concerts to cultural gatherings, find experiences that match your vib
 
 </div>
           <div className='col-lg-4'>
-           <img src={Musicimages1}   data-aos="fade-left" style={{width:"100%",height:"800px"}}/>
+           <img   alt="Music event banner" src={Musicimages1}   data-aos="fade-left" style={{width:"100%",height:"800px"}}/>
           </div>
           <div>
 

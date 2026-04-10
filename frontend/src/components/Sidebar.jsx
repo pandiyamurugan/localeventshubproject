@@ -3,12 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import "../App.css";
 import {
   FaTachometerAlt,
-  FaUsers,
-  FaChartBar,
-  FaUserCircle,
-  FaCog,
+ 
   FaSignOutAlt,
-  FaArrowLeft,
+ 
 } from "react-icons/fa";
 
 import {
@@ -71,9 +68,7 @@ export default function Sidebar({ role = "user" }) {
         {role === "admin" && (
           <>
             {renderLink("/admin", "Admin Dashboard", <FaTachometerAlt />)}
-            {/* {renderLink("/users", "Users", <FaUsers />)}
-            {renderLink("/analytics", "Reports", <FaChartBar />)}
-            {renderLink("/settings", "Settings", <FaCog />)} */}
+           
           </>
         )}
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { MdEmail } from "react-icons/md";
-import BannerImage1 from "../images/bannerimage2.webp"
+
 import BASE_URL from "../api";
 
 export default function ForgotPassword() {
