@@ -24,7 +24,7 @@ export default function ForgotPassword() {
 console.log(data);
 
       if (res.ok) {
-        toast.success("OTP sent to email");
+        toast.success("OTP sent to emailsss");
         setTimeout(() => navigate("/verify-otp", { state: { email } }), 1500);
       } else {
         toast.error(data.msg);

@@ -5,7 +5,7 @@ import { MdEmail } from "react-icons/md";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import { FaFacebookF, FaTwitter, FaGoogle, FaLinkedinIn } from "react-icons/fa";
-import { HiChevronRight } from "react-icons/hi";
+
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -14,18 +14,6 @@ import BASE_URL from "../api";
 export default function Login() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const images = [
-    "https://i0.wp.com/www.thestartupfounder.com/wp-content/uploads/2022/10/image-227.png?resize=886%2C575&ssl=1",
-    "https://endeavor.org/wp-content/uploads/2024/04/EventsSS.webp",
-    "https://www.novoteltangerang.com/wp-content/uploads/sites/55/2023/12/Featured-image-meeting.jpg",
-    "https://www.shutterstock.com/shutterstock/videos/1081612943/thumb/5.jpg?ip=x480"
-  ];
-
-  // const nextImage = () => {
-  //   setCurrentIndex((prev) => (prev + 1) % images.length);
-  // };
 
   
   const formik = useFormik({

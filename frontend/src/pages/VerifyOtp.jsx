@@ -24,6 +24,7 @@ export default function VerifyOtp() {
 
     if (res.ok) {
       toast.success("OTP verified");
+       
       setTimeout(() => navigate("/reset-password", { state: { email } }), 1500);
     } else {
       toast.error(data.msg);

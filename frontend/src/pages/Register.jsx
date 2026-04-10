@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { HiChevronRight } from "react-icons/hi";
+
 import { FaFacebookF, FaTwitter, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import { MdEmail } from "react-icons/md";
@@ -13,18 +13,9 @@ export default function Register() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
-  const images = [
-    "https://www.novoteltangerang.com/wp-content/uploads/sites/55/2023/12/Featured-image-meeting.jpg",
-    "https://endeavor.org/wp-content/uploads/2024/04/EventsSS.webp",
-    "https://i0.wp.com/www.thestartupfounder.com/wp-content/uploads/2022/10/image-227.png?resize=886%2C575&ssl=1",
-    "https://www.shutterstock.com/shutterstock/videos/1081612943/thumb/5.jpg?ip=x480"
-  ];
+ 
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextImage = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
+  
 
 
   const formik = useFormik({

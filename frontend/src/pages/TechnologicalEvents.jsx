@@ -1,6 +1,6 @@
 import React from "react";
 import Musicalevents from "../images/movieslist03.jpg";
-import Bannertwo from "../images/Banner-2.png";
+import { Link } from "react-router-dom";
 
 function TechnologyEvents() {
   return (
@@ -40,13 +40,16 @@ function TechnologyEvents() {
 
             <div className="d-flex gap-3 flex-wrap"  data-aos="fade-up"
           data-aos-delay="600">
+            <Link to="/register">
               <button className="btn btn-danger px-4 py-2">
                 Explore Events
               </button>
-
+              </Link>
+            <Link to="/register">
               <button className="btn btn-outline-dark px-4 py-2">
                 Learn More
               </button>
+              </Link>
             </div>
           </div>
 

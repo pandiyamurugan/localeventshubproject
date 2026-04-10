@@ -32,7 +32,7 @@ export default function Ticket() {
          <div>
               <div className="card shadow-lg p-4 tickets-booking">
         <div style={{width:"100%",height:"300px"}}>
-          <img src={Ticketbooking} style={{height:"100%",width:"100%",objectFit:"cover"}}/>
+          <img src={Ticketbooking} alt="Ticketbooking" style={{height:"100%",width:"100%",objectFit:"cover"}}/>
         </div>
 
       

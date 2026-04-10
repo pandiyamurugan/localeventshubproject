@@ -121,7 +121,7 @@ const navigate = useNavigate();
 
             <input
               type="text"
-              className="form-control ps-5 py-3 shadow-sm"
+              className="form-control ps-5 py-3 mb-2 shadow-sm"
               style={{ borderRadius: "50px" }}
               placeholder="Search events..."
               value={search}
@@ -152,11 +152,11 @@ const navigate = useNavigate();
         <div className="row g-4" style={{zIndex:9999}}>
           {filteredCards.map((card) => (
             <div key={card._id} className="col-md-4 col-12">
-              <div className="card shadow-sm border-0 h-100">
-                <div>
+              <div className="card shadow-sm border-0 h-100 event-card">
+                <div className="image-wrapper">
                   <img
                     src={card.image}
-                    className="w-100"
+                    className="w-100 event-image"
                     style={{ height: "200px", objectFit: "cover" }}
                     alt=""
                   />
@@ -191,6 +191,7 @@ const navigate = useNavigate();
                       borderRadius: "10px",
                       padding: "8px",
                     }}
+                    className="bookmark-btn"
                   >
                     <FiBookmark
                       size={20}

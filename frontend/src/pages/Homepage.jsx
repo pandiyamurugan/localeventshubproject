@@ -5,7 +5,8 @@ import AllEvents from "./AllEvents";
 import Eventscredit from "./Eventscredit";
 import TechnologicalEvents from "./TechnologicalEvents";
 import "aos/dist/aos.css";
-// import ScrollContents from "./ScrollContents";
+import { Link } from "react-router-dom";
+
 import Homefooter from "./Homefooter";
 import ConcerteEvents from "./ConcerteEvents"
 
@@ -57,7 +58,7 @@ export default function Homepage() {
               from music nights to cultural festivals and everything in between.
             </p>
 
-            {/* BUTTON */}
+            <Link to="/register">
             <button
               className="btn btn-danger rounded-pill px-4 py-2 mt-3"
               data-aos="zoom-in"
@@ -65,6 +66,7 @@ export default function Homepage() {
             >
               Todays Events
             </button>
+            </Link>
 
           </div>
         </div>

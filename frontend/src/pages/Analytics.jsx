@@ -35,7 +35,7 @@ export default function Analytics() {
 
       <div className="flex-grow-1 p-3 p-md-4">
       
-        <h4 style={{ fontWeight: "600" }}>Neighbourhood</h4>
+        <h2 style={{ fontWeight: "600" }}>Event <span style={{color:"orange"}}>Locations</span></h2>
 
        
         <div className="d-flex flex-column flex-md-row align-items-md-center gap-2 mt-3">
@@ -104,7 +104,7 @@ export default function Analytics() {
           </div>
 
          
-          <div className="col-lg-4">
+          <div className="col-lg-4 map-details">
             <div
               style={{
                 background: "#fff",

@@ -834,4 +834,51 @@ color:white!important;
 .active-btn {
   box-shadow: 0 0 10px orange;
 }
+.dashboard-arr{
+  width:40px;
+  height:40px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  border-radius: 50px;
+  border:2px solid orange;
+  background-color: #ffa500b5;
+}
+@media (max-width: 768px) {
+  .map-details {
+    display: none;
+  }
+}
+.event-card {
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.image-wrapper {
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px 10px 0 0;
+}
+
+.event-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.image-wrapper:hover .event-image {
+  transform: scale(1.1);
+}
+.bookmark-btn:hover {
+  background: orange;
+  transform: scale(1.1);
+}
+
+.bookmark-btn:hover svg {
+  color:green !important;
+}
   

@@ -43,7 +43,7 @@ function App() {
 
       <Routes>
       
-        {/* PUBLIC */}
+        
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/homepages" element={<Homepage />} />

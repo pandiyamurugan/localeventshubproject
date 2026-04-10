@@ -94,12 +94,7 @@ export default function Navbar() {
                     {userName || "User"}
                   </span>
 
-                  <Link
-                    to="/dashboard"
-                    className="btn btn-secondary d-flex align-items-center"
-                  >
-                    <FaArrowLeft />
-                  </Link>
+                  
 
                   <button
                     onClick={handleLogout}
@@ -108,6 +103,12 @@ export default function Navbar() {
                     <FaSignOutAlt className="me-2" />
                     Logout
                   </button>
+                  <Link
+                    to="/dashboard"
+                    className="btn btn-secondary dashboard-arr d-flex align-items-center"
+                  >
+                    <FaArrowLeft />
+                  </Link>
                 </>
               )}
 
