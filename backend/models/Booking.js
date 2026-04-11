@@ -17,11 +17,16 @@ const bookingSchema = new mongoose.Schema(
     seats: {
       type: [String],
       required: true,
+      validate: {
+        validator: (val) => val.length > 0,
+        message: "At least one seat must be selected",
+      },
     },
 
     totalAmount: {
       type: Number,
       required: true,
+      min: 0,
     },
 
     status: {
@@ -30,7 +35,9 @@ const bookingSchema = new mongoose.Schema(
       default: "paid",
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
 export default mongoose.model("Booking", bookingSchema);
