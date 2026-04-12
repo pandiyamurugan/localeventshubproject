@@ -48,9 +48,9 @@ export default function AdminDashboard() {
       });
   };
 
-  useEffect(() => {
-    loadEvents();
-  }, []);
+ useEffect(() => {
+  loadEvents();
+}, [loadEvents]);
 
   const handleAdd = () => {
     setEditId(null);
