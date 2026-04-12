@@ -7,6 +7,7 @@ import BASE_URL from "../api";
 
 export default function AdminDashboard() {
   const [events, setEvents] = useState([]);
+  const [upcoming, setUpcoming] = useState([]); // ⭐ NEW ADDED
   const [show, setShow] = useState(false);
   const [editId, setEditId] = useState(null);
 
@@ -20,18 +21,37 @@ export default function AdminDashboard() {
     image: null,
   });
 
+  // ⭐ NEW FUNCTION (ADDED)
+  const getUpcomingEvents = (data) => {
+    const now = new Date();
+
+    return data.filter((ev) => {
+      if (!ev.startTime) return false;
+
+      const [h, m] = ev.startTime.split(":");
+      const eventTime = new Date();
+      eventTime.setHours(h, m, 0, 0);
+
+      return eventTime > now;
+    });
+  };
+
 
   const loadEvents = () => {
     fetch(`${BASE_URL}/api/events`)
       .then((res) => res.json())
-      .then((data) => setEvents(data));
+      .then((data) => {
+        setEvents(data);
+
+       
+        setUpcoming(getUpcomingEvents(data));
+      });
   };
 
   useEffect(() => {
     loadEvents();
   }, []);
 
- 
   const handleAdd = () => {
     setEditId(null);
     setForm({
@@ -46,7 +66,6 @@ export default function AdminDashboard() {
     setShow(true);
   };
 
- 
   const editEvent = (ev) => {
     setEditId(ev._id);
     setForm({
@@ -61,30 +80,27 @@ export default function AdminDashboard() {
     setShow(true);
   };
 
-
   const deleteEvent = async (id) => {
     await fetch(`${BASE_URL}/api/events/${id}`, {
       method: "DELETE",
       headers: { Authorization: localStorage.getItem("token") },
     });
+
     loadEvents();
   };
 
- 
   const handleEditConfirm = (ev) => {
     if (window.confirm("Are you sure you want to edit this event?")) {
       editEvent(ev);
     }
   };
 
- 
   const handleDeleteConfirm = async (id) => {
     if (window.confirm("Are you sure you want to delete this event?")) {
       await deleteEvent(id);
     }
   };
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -118,6 +134,10 @@ export default function AdminDashboard() {
           <h2>
             ADMIN <span style={{ color: "orange" }}>DASHBOARD</span>
           </h2>
+        
+          <div className="text-muted me-3">
+            Upcoming Events: {upcoming.length}
+          </div>
 
           <button
             className="btn btn-success d-flex align-items-center gap-2"
@@ -127,15 +147,10 @@ export default function AdminDashboard() {
           </button>
         </div>
 
-       
         <div className="row g-4">
           {events.map((ev) => (
             <div key={ev._id} className="col-12 col-md-6 col-lg-3">
-              <div
-                className="card h-100 border-0 shadow-sm"
-                style={{ borderRadius: "15px" }}
-              >
-               
+              <div className="card h-100 border-0 shadow-sm" style={{ borderRadius: "15px" }}>
                 {ev.image && (
                   <div style={{ position: "relative" }}>
                     <img
@@ -150,7 +165,6 @@ export default function AdminDashboard() {
                       }}
                     />
 
-                   
                     <Dropdown
                       style={{
                         position: "absolute",
@@ -162,24 +176,17 @@ export default function AdminDashboard() {
                         variant="light"
                         size="sm"
                         className="no-caret"
-                        style={{
-                          border: "none",
-                          background: "white",
-                        }}
+                        style={{ border: "none", background: "white" }}
                       >
                         <FaEllipsisV />
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
-                        <Dropdown.Item
-                          onClick={() => handleEditConfirm(ev)}
-                        >
+                        <Dropdown.Item onClick={() => handleEditConfirm(ev)}>
                           <FaEdit className="me-2" /> Edit
                         </Dropdown.Item>
 
-                        <Dropdown.Item
-                          onClick={() => handleDeleteConfirm(ev._id)}
-                        >
+                        <Dropdown.Item onClick={() => handleDeleteConfirm(ev._id)}>
                           <FaTrash className="me-2 text-danger" /> Delete
                         </Dropdown.Item>
                       </Dropdown.Menu>
@@ -191,9 +198,7 @@ export default function AdminDashboard() {
                   <h6 className="fw-bold">{ev.title}</h6>
 
                   <p className="text-muted small">
-                    {ev.desc.length > 80
-                      ? ev.desc.slice(0, 80) + "..."
-                      : ev.desc}
+                    {ev.desc.length > 80 ? ev.desc.slice(0, 80) + "..." : ev.desc}
                   </p>
 
                   {ev.mentor && (
@@ -210,10 +215,7 @@ export default function AdminDashboard() {
                   )}
 
                   {ev.category && (
-                    <span
-                      className="badge mb-2"
-                      style={{ background: "black", padding: "13px" }}
-                    >
+                    <span className="badge mb-2" style={{ background: "black", padding: "13px" }}>
                       {ev.category}
                     </span>
                   )}
@@ -223,12 +225,9 @@ export default function AdminDashboard() {
           ))}
         </div>
 
-        
         <Modal show={show} onHide={() => setShow(false)} centered>
           <Modal.Header closeButton>
-            <Modal.Title>
-              {editId ? "Edit Event" : "Add Event"}
-            </Modal.Title>
+            <Modal.Title>{editId ? "Edit Event" : "Add Event"}</Modal.Title>
           </Modal.Header>
 
           <form onSubmit={handleSubmit}>
@@ -238,18 +237,14 @@ export default function AdminDashboard() {
                 className="form-control mb-2"
                 placeholder="Title"
                 value={form.title}
-                onChange={(e) =>
-                  setForm({ ...form, title: e.target.value })
-                }
+                onChange={(e) => setForm({ ...form, title: e.target.value })}
               />
 
               <textarea
                 className="form-control mb-2"
                 placeholder="Description"
                 value={form.desc}
-                onChange={(e) =>
-                  setForm({ ...form, desc: e.target.value })
-                }
+                onChange={(e) => setForm({ ...form, desc: e.target.value })}
               />
 
               <input
@@ -257,9 +252,7 @@ export default function AdminDashboard() {
                 className="form-control mb-2"
                 placeholder="Mentor"
                 value={form.mentor}
-                onChange={(e) =>
-                  setForm({ ...form, mentor: e.target.value })
-                }
+                onChange={(e) => setForm({ ...form, mentor: e.target.value })}
               />
 
               <div className="d-flex gap-2 mb-2">
@@ -267,27 +260,21 @@ export default function AdminDashboard() {
                   type="time"
                   className="form-control"
                   value={form.startTime}
-                  onChange={(e) =>
-                    setForm({ ...form, startTime: e.target.value })
-                  }
+                  onChange={(e) => setForm({ ...form, startTime: e.target.value })}
                 />
 
                 <input
                   type="time"
                   className="form-control"
                   value={form.endTime}
-                  onChange={(e) =>
-                    setForm({ ...form, endTime: e.target.value })
-                  }
+                  onChange={(e) => setForm({ ...form, endTime: e.target.value })}
                 />
               </div>
 
               <select
                 className="form-control mb-2"
                 value={form.category}
-                onChange={(e) =>
-                  setForm({ ...form, category: e.target.value })
-                }
+                onChange={(e) => setForm({ ...form, category: e.target.value })}
               >
                 <option value="">Select Category</option>
                 <option>Workshop</option>
@@ -299,26 +286,12 @@ export default function AdminDashboard() {
               <input
                 type="file"
                 className="form-control mb-2"
-                onChange={(e) =>
-                  setForm({ ...form, image: e.target.files[0] })
-                }
+                onChange={(e) => setForm({ ...form, image: e.target.files[0] })}
               />
-
-              {form.image && (
-                <img
-                  src={URL.createObjectURL(form.image)}
-                  className="img-fluid mt-2"
-                  style={{ maxHeight: "120px", borderRadius: "10px" }}
-                  alt="preview"
-                />
-              )}
             </Modal.Body>
 
             <Modal.Footer>
-              <Button
-                variant="secondary"
-                onClick={() => setShow(false)}
-              >
+              <Button variant="secondary" onClick={() => setShow(false)}>
                 Cancel
               </Button>
 

@@ -7,6 +7,7 @@ const eventSchema = new mongoose.Schema({
   mentor: String,
   startTime: String,
   endTime: String,
+   createdAt: { type: Date, default: Date.now },
   category: {
     type: String,
     required: true,

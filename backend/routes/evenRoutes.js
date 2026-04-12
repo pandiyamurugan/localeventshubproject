@@ -4,7 +4,8 @@ import {
   createEvent,
   updateEvent,
   deleteEvent,
-  getEventById
+  getEventById,
+  getUpcomingEvents
 } from "../controllers/eventController.js";
 
 import { verifyToken } from "../middleware/authMiddleware.js";
@@ -31,5 +32,6 @@ router.put("/:id", verifyToken, isAdmin, upload.single("image"),  updateEvent);
 
 // DELETE EVENT
 router.delete("/:id", verifyToken, isAdmin, deleteEvent);
+router.get("/events/upcoming", getUpcomingEvents);
 
 export default router;

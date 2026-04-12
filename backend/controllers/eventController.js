@@ -99,3 +99,25 @@ export const deleteEvent = async (req, res) => {
   await Event.findByIdAndDelete(req.params.id);
   res.json({ msg: "Deleted" });
 };
+export const getUpcomingEvents = async (req, res) => {
+  try {
+    const events = await Event.find();
+
+    const now = new Date();
+
+    const upcoming = events.filter((ev) => {
+      if (!ev.startTime) return false;
+
+      const [h, m] = ev.startTime.split(":");
+
+      const eventTime = new Date();
+      eventTime.setHours(h, m, 0, 0);
+
+      return eventTime > now;
+    });
+
+    res.json(upcoming);
+  } catch (err) {
+    res.status(500).json({ msg: err.message });
+  }
+};

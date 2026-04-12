@@ -886,4 +886,103 @@ color:white!important;
   box-shadow: none;
   border-color: #ccc;
 }
+
+.bell-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 99999;
+  cursor: pointer;
+}
+
+
+.bell-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ff3b30;
+  color: white;
+  font-size: 11px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.bell-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 35px;
+
+  width: 260px;
+  max-height: 320px;
+  overflow-y: auto;
+
+  background: #1f1f1f; /* dark background */
+  color: #fff;
+
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+
+  z-index: 9999;
+  border: 1px solid rgba(255, 165, 0, 0.3);
+}
+
+
+.bell-wrapper:hover .bell-dropdown {
+  display: block;
+}
+
+
+.bell-item {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: 0.2s;
+}
+
+
+.bell-item:hover {
+  background: rgba(255, 165, 0, 0.15);
+}
+
+
+.bell-item strong {
+  color: #ffa500;
+  font-size: 14px;
+}
+
+.bell-item small {
+  color: #bbb;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .bell-dropdown {
+    width: 200px;
+    right: -10px;
+    top: 40px;
+  }
+
+  .bell-item {
+    padding: 7px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bell-dropdown {
+    width: 180px;
+    right: -20px;
+  }
+
+  .bell-badge {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+  }
+}
   
+
